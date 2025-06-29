@@ -1,0 +1,156 @@
+/* Importa la fuente Inter de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+.info-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 40px 0;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(20, 30, 60, 0.0);
+  /*border-radius: 32px;*/
+  /*box-shadow: 0 8px 32px rgba(0,0,0,0.25);*/
+  padding: 48px 64px;
+  max-width: 850px;
+  width: 100%;
+  gap: 56px;
+  margin: 0 32px;
+}
+
+.info-content {
+  flex: 2;
+  min-width: 280px;
+  max-width: 500px;
+}
+
+.info-content h1 {
+   font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 2.7rem;
+  margin-bottom: 0.5rem;
+  /*color: #fff;*/
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.info-content .highlight {
+  color: #00bfff;
+}
+
+.info-content h2 {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: #b3c6ff;
+}
+
+.info-content p {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 1.15rem;
+  color: #e0e6f6;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.info-avatar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00bfff 0%, #031865 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,);
+  position: relative;
+  overflow: hidden;
+}
+
+.circle-avatar svg {
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 8px #0008);
+}
+
+.avatar-name {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(0,0,0,0.15);
+  border-radius: 12px;
+  padding: 4px 12px;
+  margin-top: 2px;
+}
+
+@media (max-width: 800px) {
+  .info-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    gap: 32px;
+  }
+  .info-content {
+    text-align: center;
+  }
+}
+
+/*para los modos, ya sea claro o oscuro*/
+/* Modo claro */
+body.light-mode .info-content h1,
+body.light-mode .avatar-name {
+  color: #222;
+}
+body.light-mode .info-content .highlight {
+  color: #0077cc;
+}
+body.light-mode .info-content h2 {
+  color: #3a4a6b;
+}
+body.light-mode .info-content p {
+  color: #333;
+}
+
+/* Modo oscuro */
+body.dark-mode .info-content h1,
+body.dark-mode .avatar-name {
+  color: #fff;
+}
+body.dark-mode .info-content .highlight {
+  color: #00bfff;
+}
+body.dark-mode .info-content h2 {
+  color: #b3c6ff;
+}
+body.dark-mode .info-content p {
+  color: #e0e6f6;
+}
+.info-title {
+  width: 100%;
+  text-align: left;
+  font-size: 2.7rem;
+  margin-bottom: 2rem;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .info-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+/* ...existing code... */
