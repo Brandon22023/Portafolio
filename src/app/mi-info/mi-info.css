@@ -1,18 +1,18 @@
 /* Importa la fuente Inter de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 .info-outer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 70vh;
-  padding: 40px 0;
+  align-items: flex-start; /* Antes: center */
+  min-height: 50vh; /* Antes: 70vh */
+  padding: 20px 0 0 0; /* Antes: 40px 0 */
 }
 
 .info-card {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: rgba(20, 30, 60, 0.0);
+  background: rgba(20, 30, 60, 0);
   /*border-radius: 32px;*/
   /*box-shadow: 0 8px 32px rgba(0,0,0,0.25);*/
   padding: 48px 64px;
@@ -29,7 +29,7 @@
 }
 
 .info-content h1 {
-   font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 2.7rem;
   margin-bottom: 0.5rem;
   /*color: #fff;*/
@@ -42,7 +42,7 @@
 }
 
 .info-content h2 {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -50,7 +50,7 @@
 }
 
 .info-content p {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.15rem;
   color: #e0e6f6;
   line-height: 1.7;
@@ -73,7 +73,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 24px rgba(0,0,0,);
+  box-shadow: 0 4px 24px rgba(0, 0, 0);
   position: relative;
   overflow: hidden;
 }
@@ -88,7 +88,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 12px;
   padding: 4px 12px;
   margin-top: 2px;
@@ -106,36 +106,172 @@
   }
 }
 
-/*para los modos, ya sea claro o oscuro*/
-/* Modo claro */
-body.light-mode .info-content h1,
-body.light-mode .avatar-name {
+/* Quitar reglas globales de body.light-mode y body.dark-mode */
+
+/* Título y nombre */
+:host-context(body.light-mode) .info-content h1,
+:host-context(body.light-mode) .avatar-name {
   color: #222;
 }
-body.light-mode .info-content .highlight {
+:host-context(body.dark-mode) .info-content h1,
+:host-context(body.dark-mode) .avatar-name {
+  color: #fff;
+}
+
+/* Highlight */
+:host-context(body.light-mode) .info-content .highlight {
   color: #0077cc;
 }
-body.light-mode .info-content h2 {
+:host-context(body.dark-mode) .info-content .highlight {
+  color: #00bfff;
+}
+
+/* Subtítulo */
+:host-context(body.light-mode) .info-content h2 {
   color: #3a4a6b;
 }
-body.light-mode .info-content p {
+:host-context(body.dark-mode) .info-content h2 {
+  color: #b3c6ff;
+}
+
+/* Párrafo */
+:host-context(body.light-mode) .info-content p {
   color: #333;
+}
+:host-context(body.dark-mode) .info-content p {
+  color: #e0e6f6;
+}
+
+/* Botones */
+:host-context(body.light-mode) .info-link {
+  background: linear-gradient(135deg, #e3eaff 0%, #b3c6ff 100%);
+  color: #222;
+}
+:host-context(body.light-mode) .info-link svg {
+  fill: #0077cc;
+}
+:host-context(body.light-mode) .info-link:hover {
+  background: #0077cc;
+  color: #fff;
+}
+:host-context(body.light-mode) .info-link:hover svg {
+  fill: #fff;
+}
+
+:host-context(body.dark-mode) .info-link {
+  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
+  color: #e0e6f6;
+}
+:host-context(body.dark-mode) .info-link svg {
+  fill: #b3c6ff;
+}
+:host-context(body.dark-mode) .info-link:hover {
+  background: #00bfff;
+  color: #fff;
+}
+:host-context(body.dark-mode) .info-link:hover svg {
+  fill: #fff;
+}
+
+.info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
+  border-radius: 16px;
+  padding: 6px 14px; /* Menor padding para tamaño promedio */
+  color: #e0e6f6;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  min-width: 0;
+  user-select: none;
+}
+
+.info-link:focus {
+  outline: 2px solid #00bfff;
+  outline-offset: 2px;
+}
+
+.info-link:active {
+  transform: scale(0.97);
+  box-shadow: 0 1px 4px rgba(0, 191, 255, 0.18);
+}
+
+.info-link svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: #b3c6ff;
+  transition: fill 0.2s;
+  pointer-events: none;
+}
+
+.info-link:hover {
+  background: #00bfff;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 191, 255, 0.12);
+  text-decoration: none;
+}
+
+.info-link:hover svg {
+  fill: #fff;
+}
+
+/* Modo claro */
+:host-context(body.light-mode) .info-link {
+  background: linear-gradient(135deg, #e3eaff 0%, #b3c6ff 100%);
+  color: #222;
+  border: 1px solid #b3c6ff;
+  padding: 6px 14px; /* Igual en modo claro */
+  border-radius: 16px;
+  font-size: 0.98rem;
+}
+:host-context(body.light-mode) .info-link svg {
+  fill: #0077cc;
+}
+:host-context(body.light-mode) .info-link:hover {
+  background: #0077cc;
+  color: #fff;
+  border-color: #0077cc;
+}
+:host-context(body.light-mode) .info-link:focus {
+  outline: 2px solid #0077cc;
+}
+:host-context(body.light-mode) .info-link:hover svg,
+:host-context(body.light-mode) .info-link:focus svg {
+  fill: #fff;
 }
 
 /* Modo oscuro */
-body.dark-mode .info-content h1,
-body.dark-mode .avatar-name {
+:host-context(body.dark-mode) .info-link {
+  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
+  color: #e0e6f6;
+  border: none;
+  padding: 6px 14px; /* Igual en modo oscuro */
+  border-radius: 16px;
+  font-size: 0.98rem;
+}
+:host-context(body.dark-mode) .info-link svg {
+  fill: #b3c6ff;
+}
+:host-context(body.dark-mode) .info-link:hover {
+  background: #00bfff;
   color: #fff;
 }
-body.dark-mode .info-content .highlight {
-  color: #00bfff;
+:host-context(body.dark-mode) .info-link:focus {
+  outline: 2px solid #00bfff;
 }
-body.dark-mode .info-content h2 {
-  color: #b3c6ff;
+:host-context(body.dark-mode) .info-link:hover svg,
+:host-context(body.dark-mode) .info-link:focus svg {
+  fill: #fff;
 }
-body.dark-mode .info-content p {
-  color: #e0e6f6;
-}
+
 /*abajo del nombre*/
 .animated-gradient-text {
   background: linear-gradient(
@@ -154,7 +290,7 @@ body.dark-mode .info-content p {
   background-clip: text;
   color: transparent;
   animation: river-gradient 3s linear infinite;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -171,85 +307,3 @@ body.dark-mode .info-content p {
     background-position: 100% 50%;
   }
 }
-/*
-links
-*/
-.info-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 24px;
-  margin-top: 32px;
-}
-
-.info-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  /*background: rgba(30, 40, 60, 0.7);*/
-  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
-  border-radius: 20px;
-  padding: 8px 18px;
-  color: #e0e6f6;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.info-link svg {
-  display: inline-block;
-  vertical-align: middle;
-  fill: #b3c6ff;
-  transition: fill 0.2s;
-}
-
-.info-link:hover {
-  background: #00bfff;
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(0,191,255,0.12);
-}
-
-.info-link:hover svg {
-  fill: #fff;
-}
-
-/* Modo claro */
-body.light-mode .info-link {
-  background: linear-gradient(135deg, #e3eaff 0%, #b3c6ff 100%);
-  color: #222;
-}
-
-body.light-mode .info-link svg {
-  fill: #0077cc;
-}
-
-body.light-mode .info-link:hover {
-  background: #0077cc;
-  color: #fff;
-}
-
-body.light-mode .info-link:hover svg {
-  fill: #fff;
-}
-
-/* Modo oscuro */
-body.dark-mode .info-link {
-  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
-  color: #e0e6f6;
-}
-
-body.dark-mode .info-link svg {
-  fill: #b3c6ff;
-}
-
-body.dark-mode .info-link:hover {
-  background: #00bfff;
-  color: #fff;
-}
-
-body.dark-mode .info-link:hover svg {
-  fill: #fff;
-}
-

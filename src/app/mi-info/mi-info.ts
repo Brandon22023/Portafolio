@@ -1,13 +1,13 @@
-import { Component, ViewEncapsulation} from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
   selector: 'app-mi-info',
   imports: [],
   templateUrl: './mi-info.html',
-  styleUrl: './mi-info.css',
-  encapsulation: ViewEncapsulation.None //hace los estilos globales
+  styleUrl: './mi-info.css'
 })
 export class MiInfo {
 
 }
+

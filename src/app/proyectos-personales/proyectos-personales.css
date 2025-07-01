@@ -1,35 +1,53 @@
 /* Importa la fuente Inter de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 .info-outer {
   display: flex;
+  flex-direction: column; /* esto con el fin de que aparezca uno encima del otro */
   justify-content: center;
-  align-items: center;
-  min-height: 70vh;
-  padding: 40px 0;
+  align-items: center; /* Antes center */
+  min-height: 50vh; /* Antes 70vh */
+  padding: 20px 0 0 0; /* Menos padding arriba */
 }
-
+/* Carrusel: imágenes adaptables y alineadas */
+.carousel-inner img {
+  height: 220px; /* Más moderado */
+  width: 100%;
+  object-fit: fill; /* Mejor presentación */
+  object-position: center;
+  border-radius: 1.5rem;
+  background: #01052d;
+  display: block;
+  margin-bottom: 18px; /* Separación inferior */
+}
+/* Opcional: que el carrusel ocupe todo el ancho posible del contenedor */
+.info-avatar {
+  flex: 2.2;
+  min-width: 280px;
+  max-width: 420px; /* Limita el ancho máximo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .info-card {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: rgba(20, 30, 60, 0.0);
-  /*border-radius: 32px;*/
-  /*box-shadow: 0 8px 32px rgba(0,0,0,0.25);*/
+  background: rgba(20, 30, 60, 0);
   padding: 48px 64px;
-  max-width: 850px;
+  max-width: 900px; /* Un poco más ancho si lo deseas */
   width: 100%;
-  gap: 56px;
+  gap: 64px; /* Más espacio entre imagen y texto */
   margin: 0 32px;
 }
 
 .info-content {
-  flex: 2;
-  min-width: 280px;
-  max-width: 500px;
+  flex: 1.2;
+  min-width: 220px;
+  max-width: 380px;
 }
 
 .info-content h1 {
-   font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 2.7rem;
   margin-bottom: 0.5rem;
   /*color: #fff;*/
@@ -42,7 +60,7 @@
 }
 
 .info-content h2 {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -50,30 +68,22 @@
 }
 
 .info-content p {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.15rem;
   color: #e0e6f6;
   line-height: 1.7;
   margin-bottom: 0;
 }
 
-.info-avatar {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .circle-avatar {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00bfff 0%, #031865 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 24px rgba(0,0,0,);
+  box-shadow: 0 4px 24px rgba(0, 0, 0);
   position: relative;
   overflow: hidden;
 }
@@ -84,11 +94,10 @@
 }
 
 .avatar-name {
-  color: #fff;
   font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 12px;
   padding: 4px 12px;
   margin-top: 2px;
@@ -99,58 +108,208 @@
     flex-direction: column;
     align-items: center;
     padding: 32px 16px;
-    gap: 32px;
+    gap: 36px;
   }
   .info-content {
     text-align: center;
   }
 }
 
-/*para los modos, ya sea claro o oscuro*/
-/* Modo claro */
-body.light-mode .info-content h1,
-body.light-mode .avatar-name {
-  color: #222;
-}
-body.light-mode .info-content .highlight {
-  color: #0077cc;
-}
-body.light-mode .info-content h2 {
-  color: #3a4a6b;
-}
-body.light-mode .info-content p {
-  color: #333;
-}
-
-/* Modo oscuro */
-body.dark-mode .info-content h1,
-body.dark-mode .avatar-name {
-  color: #fff;
-}
-body.dark-mode .info-content .highlight {
-  color: #00bfff;
-}
-body.dark-mode .info-content h2 {
-  color: #b3c6ff;
-}
-body.dark-mode .info-content p {
-  color: #e0e6f6;
-}
 .info-title {
   width: 100%;
   text-align: left;
   font-size: 2.7rem;
   margin-bottom: 2rem;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
+  /* color se controla por modo */
+}
+
+/* Elimina estilos globales para .info-title y usa variables locales */
+:host {
+  --titulo-color-oscuro: #fff;
+  --titulo-color-claro: #222;
+}
+
+/* Por defecto modo oscuro */
+.info-title {
+  color: var(--titulo-color-oscuro);
+}
+
+/* Modo claro */
+:host-context(body.light-mode) .info-title {
+  color: var(--titulo-color-claro);
+}
+
+.info-subtitle {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  /* color se controla por modo */
+}
+
+.info-description {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+  /* color se controla por modo */
+}
+
+/* Quitar reglas globales de body.light-mode y body.dark-mode */
+
+/* Título */
+:host-context(body.light-mode) .info-title {
+  color: #222;
+}
+:host-context(body.dark-mode) .info-title {
   color: #fff;
 }
 
+/* Subtítulo */
+:host-context(body.light-mode) .info-subtitle {
+  color: #3a4a6b;
+}
+:host-context(body.dark-mode) .info-subtitle {
+  color: #b3c6ff;
+}
+
+/* Descripción */
+:host-context(body.light-mode) .info-description {
+  color: #333;
+}
+:host-context(body.dark-mode) .info-description {
+  color: #e0e6f6;
+}
+
+/* Highlight */
+:host-context(body.light-mode) .info-content .highlight {
+  color: #0077cc;
+}
+:host-context(body.dark-mode) .info-content .highlight {
+  color: #00bfff;
+}
+
+/* Botones */
+:host-context(body.light-mode) .info-link {
+  background: linear-gradient(135deg, #e3eaff 0%, #b3c6ff 100%);
+  color: #222;
+}
+:host-context(body.light-mode) .info-link svg {
+  fill: #0077cc;
+}
+:host-context(body.light-mode) .info-link:hover {
+  background: #0077cc;
+  color: #fff;
+}
+:host-context(body.light-mode) .info-link:hover svg {
+  fill: #fff;
+}
+
+:host-context(body.dark-mode) .info-link {
+  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
+  color: #e0e6f6;
+}
+:host-context(body.dark-mode) .info-link svg {
+  fill: #b3c6ff;
+}
+:host-context(body.dark-mode) .info-link:hover {
+  background: #00bfff;
+  color: #fff;
+}
+:host-context(body.dark-mode) .info-link:hover svg {
+  fill: #fff;
+}
+
+/* Responsive para móviles */
 @media (max-width: 800px) {
-  .info-title {
-    text-align: center;
-    font-size: 2rem;
+  .carousel-inner img {
+    height: 180px;
+  }
+  .info-avatar {
+    min-width: 200px;
+    max-width: 100vw;
   }
 }
-/* ...existing code... */
+
+/*
+links
+*/
+.info-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 32px;
+}
+
+.info-link {
+  display: inline-flex; /* Cambia flex por inline-flex */
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #031865 0%, #00bfff 100%);
+  border-radius: 20px;
+  padding: 8px 18px;
+  color: #e0e6f6;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: auto; /* Asegura que no se estire */
+  min-width: 0; /* Opcional, por si acaso */
+}
+
+.info-link svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: #b3c6ff;
+  transition: fill 0.2s;
+}
+
+.info-link:hover {
+  background: #00bfff;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 191, 255, 0.12);
+}
+
+.info-link:hover svg {
+  fill: #fff;
+}
+
+.animated-gradient-text {
+  background: linear-gradient(
+    90deg,
+    #00eaff 0%,
+    #0099ff 20%,
+    #0055ff 40%,
+    #00eaff 60%,
+    #0099ff 80%,
+    #0055ff 100%
+  );
+  background-size: 400% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: river-gradient 3s linear infinite;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+@keyframes river-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}

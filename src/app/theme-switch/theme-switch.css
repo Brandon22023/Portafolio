@@ -14,19 +14,24 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #222;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px; width: 26px;
-  left: 4px; bottom: 4px;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
@@ -38,10 +43,24 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.theme-switch-container{
-    position: fixed;
-    top: 20px;
-    right: 20px; /*en ves de usar left se usa right para ponerlo a la derecha*/
-    left: auto;
-    z-index: 1000;
+.theme-switch-container {
+  position: fixed;
+  top: 20px;
+  right: 20px; /*en ves de usar left se usa right para ponerlo a la derecha*/
+  left: auto;
+  z-index: 1000;
+}
+
+/* Modo claro */
+:host-context(body.light-mode) .slider {
+  background-color: #fff;
+  border: 1px solid #bbb;
+}
+
+/* Cambia el color del círculo también si lo deseas */
+:host-context(body.light-mode) .slider:before {
+  background-color: #222;
+}
+:host-context(body.dark-mode) .slider:before {
+  background-color: #fff;
 }
