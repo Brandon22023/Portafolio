@@ -3,11 +3,12 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { ThemeSwitch } from "./theme-switch/theme-switch";
 import { MiInfo } from "./mi-info/mi-info";
 import { ProyectosPersonales } from "./proyectos-personales/proyectos-personales";
+import { Tecnologias } from "./tecnologias/tecnologias";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ThemeSwitch, MiInfo, ProyectosPersonales],
+  imports: [ThemeSwitch, MiInfo, ProyectosPersonales, Tecnologias],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
