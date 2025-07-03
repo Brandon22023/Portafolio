@@ -1,5 +1,5 @@
 /* Importa la fuente Inter de Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
 .info-outer {
   display: flex;
   flex-direction: column; /* esto con el fin de que aparezca uno encima del otro */
