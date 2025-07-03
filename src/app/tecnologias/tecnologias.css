@@ -1,5 +1,14 @@
 /* Importa la fuente Inter de Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+:root {
+  --titulo-color-oscuro: #7ee0ff;
+  --titulo-color-claro: #0a2342;
+}
+
+body.light-mode {
+  --titulo-color-oscuro: #0a2342;
+  --titulo-color-claro: #7ee0ff;
+}
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -32,7 +41,6 @@
   font-weight: 700;
   margin-bottom: 18px;
   letter-spacing: 1px;
-  color: #7ee0ff;
   text-align: center;
 }
 
@@ -78,6 +86,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 90px;/*espacio al final*/
 }
 
 .tech-main-title {
@@ -88,6 +97,15 @@
   margin-bottom: 32px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+
+:host-context(body.light-mode) .tech-main-title {
+  color: #0a2342;
+}
+:host-context(body.dark-mode) .tech-main-title {
+  color: #7ee0ff;
 }
 
 .tech-icon-item {
@@ -110,3 +128,5 @@
   height: 60px !important;
   width: 60px !important;
 }
+
+

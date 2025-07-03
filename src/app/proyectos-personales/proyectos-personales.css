@@ -117,7 +117,7 @@
 
 .info-title {
   width: 100%;
-  text-align: left;
+  text-align: center;
   font-size: 2.7rem;
   margin-bottom: 2rem;
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -165,7 +165,7 @@
   color: #222;
 }
 :host-context(body.dark-mode) .info-title {
-  color: #fff;
+  color: #62ccec;
 }
 
 /* Subtítulo */
